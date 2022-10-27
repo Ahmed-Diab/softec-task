@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <!-- app name -->
+    <div class="company-name">Softec</div>
+    <!-- menu -->
+    <ul class="nav-links">
+        <!-- checkbox for mobile screens -->
+        <input type="checkbox" id="checkbox_toggle"/>
+        <label #xxx for="checkbox_toggle" class="hamburger">&#9776;</label>
+        <!-- menu router links -->
+        <div class="menu">
+            <li>
+                <a [routerLink]="['/products']" routerLinkActive="router-link-active" (click)="xxx.click()">Products</a>
+            </li>
+            <li>
+                <a [routerLink]="['/orders']" routerLinkActive="router-link-active" (click)="xxx.click()">Orders</a>
+            </li>
+        </div>
+    </ul>
+</nav>

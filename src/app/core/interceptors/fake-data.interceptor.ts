@@ -43,6 +43,14 @@ export class FakeDataInterceptor implements HttpInterceptor {
       return next.handle(request).pipe(delay(500));
     }
 
+    let usersPath = '/assets/data/users.json';
+    if (request.url.endsWith('users.json') && request.method == 'GET') {
+      request = request.clone({
+        url: usersPath,
+      });
+      return next.handle(request).pipe(delay(500));
+    }
+
     // handle GET Order By Id from json file
     // if (request.url.includes('getOrder') && request.method == 'GET') {
     //   let orderId = request.params.get('orderId')

@@ -26,13 +26,14 @@ export class OrdersComponent implements OnInit , OnDestroy{
 
   //#region Angular life cycle
   ngOnInit(): void {
+    this.subscriptions = [];
     this.getProducts();
     this.getOrders();
-
     // catch small screen if changed using BreakpointObserver
-    this.responsive.observe([Breakpoints.XSmall]).subscribe((result) => {
+    let subResponsive = this.responsive.observe([Breakpoints.XSmall]).subscribe((result) => {
       this.isSmallScreen = result.matches ? true : false;
     });
+    this.subscriptions.push(subResponsive)
   }
 
   ngOnDestroy(): void {
@@ -68,9 +69,10 @@ export class OrdersComponent implements OnInit , OnDestroy{
         return orders;
       })
     );
-    orders.subscribe((data) => {
+     let subOrders = orders.subscribe((data) => {
       this.orders$ = data;
     });
+    this.subscriptions.push(subOrders);
   }
   //#endregion Methods
 }

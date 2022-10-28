@@ -1,1 +1,26 @@
-<p>product-card works!</p>
+<!-- small screens card -->
+<div class="cards-container">
+    <div class="card" *ngFor="let product of products">
+        <picture>
+            <img class="image" [src]="product.ProductImg" [alt]="product.ProductName">
+        </picture>
+        <h3>{{product.ProductName}}</h3>
+        <h5>
+            Price : {{product.ProductPrice | number:'.2'}}
+        </h5>
+        <h5>
+            Available Pieces : {{product.AvailablePieces}}
+        </h5>
+        <div>
+            <button *ngIf="product.AvailablePieces < 4" [ngClass]="{'btn-warn':product.AvailablePieces < 4}"
+                (click)="openAvailablePiecesModal(product)" class="btn">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Update Quantity
+            </button>
+            <button class="btn" (click)="addProductToOrder(product)">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                Add To Order
+            </button>
+        </div>
+    </div>
+</div>

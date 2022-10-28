@@ -7,55 +7,9 @@
   margin: 1em auto;
   margin: auto;
   overflow-x: auto;
-  height: 80vh;
+  height: calc(100vh - 77px);
   background-color: --primarycolor !important;
 }
-
-.is-striped {
-  background-color: rgba(233, 200, 147, 0.2);
-}
-
-/* Table column sizing
-================================== */
-.date-cell {
-  width: 30%;
-}
-.image-cell {
-  width: 15%;
-  img {
-    width: 100%;
-  }
-}
-
-// Mobile screen
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-  .card {
-    flex: 0 0 200px;
-    margin: 10px;
-    border: 1px solid $light;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    padding-bottom: 20px;
-    position: relative;
-    img {
-      max-width: 100%;
-    }
-    h3,
-    h5 {
-      padding: 5px 0px 0px 0px;
-      margin: 5px 0px 0px 0px;
-    }
-  }
-}
-
-.few-pieces{
-  border: solid $warn 2px !important;
-  border-radius: 10px;
- }
 
 //  Modal 
 .modal {

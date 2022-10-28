@@ -1,0 +1,40 @@
+@import "../../../assets/scss/shared";
+.table {
+  display: flex;
+
+  .table-row {
+    height: 90px !important;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    margin :5px 0px;
+    align-self: center;
+
+    .table-cell {
+      display: flex;
+      height: 90px !important;
+      align-self: center;
+      align-items: center;
+
+      /* Align items horizontally */
+      justify-content: center;
+    }
+    .table-cell--foot{
+      width: 10%;
+    }
+    .image-cell {
+      max-width: 10%;
+      height: 100%;
+      width: 70px !important;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .few-pieces {
+    border: solid $warn 2px !important;
+    border-radius: 10px;
+  }
+}

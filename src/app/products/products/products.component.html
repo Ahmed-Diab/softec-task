@@ -1,77 +1,11 @@
 <section class="products">
   <ng-container *ngIf="products$ | async as products">
     <!-- table for large screens -->
-    <div class="wrapper">
-      <div class="table table--5cols" *ngIf="!isSmallScreen">
-        <div class="table-row table-row--head">
-          <div class="table-cell  image-cell column-heading">Image</div>
-          <div class="table-cell date-cell column-heading">Name</div>
-          <div class="table-cell payment-type-cell column-heading">Price</div>
-          <div class="table-cell total-cell column-heading">Quantity</div>
-          <div class="table-cell total-cell column-heading"> Action</div>
-        </div>
-        <div class="table-row" *ngFor="let product of products"
-          [ngClass]="{'few-pieces': product.AvailablePieces <= 4}">
-          <div class="table-cell image-cell">
-            <div class="table-cell-content date-content">
-              <picture>
-                <img class="image" [src]="product.ProductImg" [alt]="product.ProductName">
-              </picture>
-            </div>
-          </div>
-          <div class="table-cell date-cell">
-            <div class="table-cell-content access-link-content">
-              <p>{{product.ProductName | titlecase}}</p>
-            </div>
-          </div>
-          <div class="table-cell payment-type-cell">
-            <div class="table-cell-content payment-type-cell">
-              <p>{{product.ProductPrice | number:'.2'}}</p>
-            </div>
-          </div>
-          <div class="table-cell table-cell--foot total-cell">
-            <div class="table-cell-content pdf-content">
-              <p>{{product.AvailablePieces}}</p>
-            </div>
-          </div>
-          <div class="table-cell table-cell--foot total-cell">
-            <div class="table-cell-content pdf-content">
-              <button *ngIf="product.AvailablePieces > 0" class="btn" (click)="addProductToOrder(product)">Sell</button>
-              <button *ngIf="product.AvailablePieces <= 4" [ngClass]="{'btn-warn': product.AvailablePieces <= 4}"
-                (click)="openAvailablePiecesModal(product)" class="btn">Upadate Qut.</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- small screens card -->
-      <div class="cards-container" *ngIf="isSmallScreen">
-        <div class="card" *ngFor="let product of products">
-          <picture>
-            <img class="image" [src]="product.ProductImg" [alt]="product.ProductName">
-          </picture>
-          <h3>{{product.ProductName}}</h3>
-          <h5>
-            Price : {{product.ProductPrice | number:'.2'}}
-          </h5>
-          <h5>
-            Available Pieces : {{product.AvailablePieces}}
-          </h5>
-          <div>
-            <button *ngIf="product.AvailablePieces < 4" [ngClass]="{'btn-warn':product.AvailablePieces < 4}"
-              (click)="openAvailablePiecesModal(product)" class="btn">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-              Update Quantity
-            </button>
-            <button class="btn" (click)="addProductToOrder(product)">
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-              Add To Order
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-product-card *ngIf="isSmallScreen && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-card>
+    <app-product-table *ngIf="!isSmallScreen  && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-table>
+ 
+      <!-- *ngIf="isSmallScreen" -->
+     
   </ng-container>
 
   <!-- Modal form to change Available Pieces -->

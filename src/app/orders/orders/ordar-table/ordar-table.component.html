@@ -1,0 +1,38 @@
+<div class="table table--collapse">
+    <div class="table-row table-row--head">
+      <div class="table-cell id-cell column-heading">Order Id</div>
+      <div class="table-cell date-cell column-heading">Date</div>
+      <div class="table-cell payment-type-cell column-heading">Payment Type</div>
+      <div class="table-cell total-cell column-heading">Total</div>
+    </div>
+
+    <div class="table-row" *ngFor="let order of orders" softecHoverCell>
+      <div class="table-cell  id-cell">
+         <div class="table-cell-content date-content">
+          <p class="webinar-date"> {{order.OrderId}} </p>
+        </div>
+      </div>
+      <div class="table-cell date-cell">
+         <div class="table-cell-content access-link-content">
+          <p>{{order.OrderDate | date: 'yyyy-MM-dd'}}</p>
+         </div>
+      </div>
+      <div class="table-cell payment-type-cell">
+         <div class="table-cell-content payment-type-cell">
+          <p>{{order.PaymentType | titlecase}}</p>
+        </div>
+      </div>
+      <div class="table-cell table-cell--foot total-cell">
+         <div class="table-cell-content pdf-content">
+          <p>{{order.Total | number:'.2'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-row table-row--head">
+      <div class="table-cell  id-cell column-heading"> </div>
+      <div class="table-cell date-cell column-heading"> </div>
+      <div class="table-cell payment-type-cell column-heading"> </div>
+      <div class="table-cell total-cell column-heading"> </div>
+    </div>
+  </div>

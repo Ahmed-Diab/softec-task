@@ -1,0 +1,24 @@
+ <div class="cards-container" >
+    <div class="card" *ngFor="let order of orders">
+      <h5>
+        Order Id : {{order.OrderId}}
+      </h5>
+      <h5>
+        Order Date : {{order.OrderDate | date:'yyyy/MM/dd'}}
+      </h5>
+      <h5>
+        Total : {{order.Total | number:'.2'}}
+      </h5>
+      <div>
+        <button
+          (click)="getOrder(order)" class="btn-large">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          View
+        </button>
+        <!-- <button class="btn" (click)="addProductToOrder(product)">
+          <i class="fa fa-plus-square" aria-hidden="true"></i>
+          Add To Order
+        </button>   -->
+      </div>
+    </div>
+  </div>

@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, Subscription } from 'rxjs';
 import { IProduct } from 'src/app/products/iproduct';
@@ -15,10 +16,11 @@ export class OrdersComponent implements OnInit , OnDestroy{
   orders$: IOrder[] = [];
   products:IProduct[];
   private subscriptions: Subscription[] = [];
+  isSmallScreen: boolean;
   //#endregion Declrations
 
   //#region Constractor
-  constructor(private orderRepository: OrderService, private productService:ProductService) {}
+  constructor( private responsive: BreakpointObserver, private orderRepository: OrderService, private productService:ProductService) {}
   
   //#endregion Constractor
 
@@ -26,6 +28,11 @@ export class OrdersComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.getProducts();
     this.getOrders();
+
+    // catch small screen if changed using BreakpointObserver
+    this.responsive.observe([Breakpoints.XSmall]).subscribe((result) => {
+      this.isSmallScreen = result.matches ? true : false;
+    });
   }
 
   ngOnDestroy(): void {

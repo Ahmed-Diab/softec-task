@@ -27,7 +27,10 @@
 .btn {
   @extend %shared_btn;
 }
-
+.btn-large{
+  @extend %shared_btn;
+  width: 90%;
+}
 .btn-warn{
   @extend %shared_btn;
   background-color: $warn;

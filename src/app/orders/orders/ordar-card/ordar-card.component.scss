@@ -1,0 +1,29 @@
+@import '../../../../assets/scss/shared';
+// Mobile screen
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    .card {
+      flex: 0 0 250px;
+      margin: 10px;
+      border: 1px solid $light;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      padding-bottom: 20px;
+      position: relative;
+      img {
+        max-width: 100%;
+      }
+      h3,
+      h5 {
+        padding: 5px 0px 0px 0px;
+        margin: 5px 0px 0px 0px;
+      }
+    }
+  }
+  
+  .few-pieces{
+    border: solid $warn 2px !important;
+    border-radius: 10px;
+   }

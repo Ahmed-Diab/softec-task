@@ -5,10 +5,13 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdarTableComponent } from './orders/ordar-table/ordar-table.component';
 import { SharedModule } from '../shared/shared.module';
+import { OrdarCardComponent } from './orders/ordar-card/ordar-card.component';
+
 @NgModule({
   declarations: [
     OrdersComponent,
-     OrdarTableComponent
+     OrdarTableComponent,
+     OrdarCardComponent
    ],
   imports: [
     CommonModule,

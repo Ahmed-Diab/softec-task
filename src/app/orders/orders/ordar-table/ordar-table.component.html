@@ -6,7 +6,7 @@
       <div class="table-cell total-cell column-heading">Total</div>
     </div>
 
-    <div class="table-row" *ngFor="let order of orders" softecHoverCell>
+    <div (click)="getOrder(order)" class="table-row" *ngFor="let order of orders" softecHoverCell>
       <div class="table-cell  id-cell">
          <div class="table-cell-content date-content">
           <p class="webinar-date"> {{order.OrderId}} </p>

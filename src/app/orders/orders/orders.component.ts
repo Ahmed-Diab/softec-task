@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, Subscription } from 'rxjs';
 import { IProduct } from 'src/app/products/iproduct';
 import { ProductService } from 'src/app/products/product.service';
-import { IOrder } from '../iorder';
+import { IOrder, IOrderProduct } from '../iorder';
 import { OrderService } from '../order.service';
 
 @Component({
@@ -11,29 +11,39 @@ import { OrderService } from '../order.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })
-export class OrdersComponent implements OnInit , OnDestroy{
+export class OrdersComponent implements OnInit, OnDestroy {
   //#region Declrations
   orders$: IOrder[] = [];
-  products:IProduct[];
+  products: IProduct[];
   private subscriptions: Subscription[] = [];
   isSmallScreen: boolean;
   //#endregion Declrations
 
   //#region Constractor
-  constructor( private responsive: BreakpointObserver, private orderRepository: OrderService, private productService:ProductService) {}
-  
+  constructor(
+    private responsive: BreakpointObserver,
+    private orderService: OrderService,
+    private productService: ProductService
+  ) {}
+
   //#endregion Constractor
 
   //#region Angular life cycle
   ngOnInit(): void {
+    this.orderService.getSelecteOrder().subscribe((order) => {
+      console.log(order);
+    });
+    
     this.subscriptions = [];
     this.getProducts();
     this.getOrders();
     // catch small screen if changed using BreakpointObserver
-    let subResponsive = this.responsive.observe([Breakpoints.XSmall]).subscribe((result) => {
-      this.isSmallScreen = result.matches ? true : false;
-    });
-    this.subscriptions.push(subResponsive)
+    let subResponsive = this.responsive
+      .observe([Breakpoints.XSmall])
+      .subscribe((result) => {
+        this.isSmallScreen = result.matches ? true : false;
+      });
+    this.subscriptions.push(subResponsive);
   }
 
   ngOnDestroy(): void {
@@ -41,7 +51,7 @@ export class OrdersComponent implements OnInit , OnDestroy{
       sub.unsubscribe();
     });
   }
-   //#endregion Angular life cycle
+  //#endregion Angular life cycle
   //#region Methods
   getProducts() {
     let productsSubscription = this.productService
@@ -50,7 +60,7 @@ export class OrdersComponent implements OnInit , OnDestroy{
     this.subscriptions.push(productsSubscription);
   }
   getOrders() {
-    const orders = this.orderRepository.getOrders().pipe(
+    const orders = this.orderService.getOrders().pipe(
       map((orders) => {
         orders.forEach((order) => {
           // I do this because not all OrderDate at json file in same length and i am lazy to update order date one by one
@@ -69,10 +79,21 @@ export class OrdersComponent implements OnInit , OnDestroy{
         return orders;
       })
     );
-     let subOrders = orders.subscribe((data) => {
+    let subOrders = orders.subscribe((data) => {
       this.orders$ = data;
     });
     this.subscriptions.push(subOrders);
+  }
+
+  getOrderById(order: IOrder) {
+    if (order.Products) {
+      order.Products.forEach((product: IOrderProduct, index: number) => {
+        order.Products[index].Product = this.products.find(
+          (x) => x.ProductId == product.ProductId
+        );
+      });
+    }
+    this.orderService.setSelecteOrder(order);
   }
   //#endregion Methods
 }

@@ -1,5 +1,5 @@
 <section class="orders">
     <h3>Orders</h3>
-    <app-ordar-table *ngIf="!isSmallScreen" [orders]="orders$"></app-ordar-table>
+    <app-ordar-table *ngIf="!isSmallScreen" [orders]="orders$" (OrderEvent)="getOrderById($event)"></app-ordar-table>
     <app-ordar-card *ngIf="isSmallScreen" [orders]="orders$"></app-ordar-card>
 </section>

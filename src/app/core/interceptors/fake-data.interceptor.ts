@@ -5,9 +5,9 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpResponse,
-} from '@angular/common/http';
+ } from '@angular/common/http';
 import { delay, Observable, of } from 'rxjs';
-
+ 
 @Injectable()
 export class FakeDataInterceptor implements HttpInterceptor {
   constructor() {}
@@ -23,23 +23,33 @@ export class FakeDataInterceptor implements HttpInterceptor {
       });
       return next.handle(request).pipe(delay(500));
     }
-    
+
     //  Handle Edit Product requst
     if (request.url == '/editProduct' && request.method == 'POST') {
       request = request.clone({
-        body: request.body
+        body: request.body,
       });
-      return of(new HttpResponse({ status: 200, body :request.body })).pipe(delay(500));
-     }
+      return of(new HttpResponse({ status: 200, body: request.body })).pipe(
+        delay(500)
+      );
+    }
 
     // handle GET requst to get all orders from json file
-    let orderssPath = '/assets/data/orders.json';
+    let ordersPath = '/assets/data/orders.json';
     if (request.url.endsWith('orders.json') && request.method == 'GET') {
       request = request.clone({
-        url: orderssPath,
+        url: ordersPath,
       });
       return next.handle(request).pipe(delay(500));
     }
+
+    // handle GET Order By Id from json file
+    // if (request.url.includes('getOrder') && request.method == 'GET') {
+    //   let orderId = request.params.get('orderId')
+    //   request = request.clone({
+    //     url: ordersPath,
+    //   }); 
+    //  }
     return next.handle(request);
   }
 }

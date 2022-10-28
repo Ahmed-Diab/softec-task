@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IOrder } from '../../iorder';
 
 @Component({
@@ -9,9 +9,14 @@ import { IOrder } from '../../iorder';
 })
 export class OrdarTableComponent implements OnInit {
   @Input() orders:IOrder[];
+  @Output() OrderEvent = new EventEmitter<IOrder>();;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getOrder(order:IOrder){
+    this.OrderEvent.emit(order);
   }
 
 }

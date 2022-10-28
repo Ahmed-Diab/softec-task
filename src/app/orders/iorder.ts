@@ -1,3 +1,5 @@
+import { IProduct } from "../products/iproduct";
+
 export interface IOrder {
     OrderId: number;
     OrderDate: string;
@@ -9,4 +11,5 @@ export interface IOrder {
   export interface IOrderProduct {
     ProductId: number;
     Quantity: number;
+    Product?:IProduct;
   }

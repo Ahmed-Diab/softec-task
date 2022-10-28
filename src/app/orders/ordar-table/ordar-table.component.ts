@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IOrder } from '../../iorder';
+import { IOrder } from '../iorder';
 
 @Component({
   selector: 'app-ordar-table',

@@ -15,4 +15,8 @@ export class ProductService {
   getProducts():Observable<IProduct[]>{
      return this.http.get<IProduct[]>('products.json');
   }
+  
+  editProductQuantity(productId:number, quantity:number):Observable<{productId:number, quantity:number}> {
+    return this.http.post<{productId:number, quantity:number}>('/editProduct', {productId, quantity})
+  }
 }

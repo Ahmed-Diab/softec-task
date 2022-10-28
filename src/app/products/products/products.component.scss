@@ -1,6 +1,6 @@
 @import "../../../assets/scss/shared";
 
-.wrapper {
+.products {
   padding: 20px;
   margin: auto;
   width: 100%;
@@ -57,7 +57,7 @@
       padding: 0.8em 1.2em;
       overflow: hidden; // Or flex might break
       list-style: none;
-
+      align-self: center;
       &.column-heading {
         background-color: $primary;
         color: white;

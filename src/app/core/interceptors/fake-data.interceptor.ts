@@ -4,25 +4,33 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
 } from '@angular/common/http';
-import { delay, Observable } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
 @Injectable()
 export class FakeDataInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(
-    request: HttpRequest<unknown>,
+    request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // handle GET requst to get all products from json file
-    let peoductsPath = "/assets/data/porducts.json";
-    
-    if (request.url.endsWith('products.json') && request.method == "GET") {
+    let peoductsPath = '/assets/data/porducts.json';
+    if (request.url.endsWith('products.json') && request.method == 'GET') {
       request = request.clone({
-        url:  peoductsPath,
+        url: peoductsPath,
       });
       return next.handle(request).pipe(delay(500));
     }
+    
+    //  Handle Edit Product requst
+    if (request.url == '/editProduct' && request.method == 'POST') {
+      request = request.clone({
+        body: request.body
+      });
+      return of(new HttpResponse({ status: 200, body :request.body })).pipe(delay(500));
+     }
 
     // handle GET requst to get all orders from json file
     let orderssPath = '/assets/data/orders.json';
@@ -32,9 +40,6 @@ export class FakeDataInterceptor implements HttpInterceptor {
       });
       return next.handle(request).pipe(delay(500));
     }
-
     return next.handle(request);
   }
-
-  
 }

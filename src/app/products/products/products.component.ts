@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { find, Observable } from 'rxjs';
 import { IProduct } from '../iproduct';
 import { ProductService } from '../product.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   //#region Declrations
   products$: Observable<IProduct[] | null>;
   isSmallScreen: boolean;
-  availablePieces: number = 0;
+  quantity: number = 0;
   product: IProduct;
   @ViewChild('availablePiecesModal', { static: false })
   availablePiecesModal: ElementRef;
@@ -29,28 +29,46 @@ export class ProductsComponent implements OnInit {
 
   //#region Angular Life cycle
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts(); //.subscribe((dd) => console.log(dd));
+    this.products$ = this.productService.getProducts();
+
+    // catch small screen if changed using BreakpointObserver
     this.responsive.observe([Breakpoints.XSmall]).subscribe((result) => {
       this.isSmallScreen = result.matches ? true : false;
     });
+
   }
   //#endregion
 
   //#region Methods
-
-  openAvailablePiecesModal(product: IProduct) {
+  // open Available Pieces Modal
+  openAvailablePiecesModal(product: IProduct):void {
     this.availablePiecesModal.nativeElement.style.display = 'block';
-    this.availablePieces = product.AvailablePieces;
+    this.quantity = product.AvailablePieces;
     this.product = product;
   }
-
-  saveProductAvailablePieces() {
-    this.product.AvailablePieces = this.availablePieces;
+  // update Product Available Pieces value
+  saveProductAvailablePieces():void {
+    this.productService
+      .editProductQuantity(this.product.ProductId, this.quantity)
+      .subscribe((res) => {
+        this.products$.forEach((x) => {
+             x?.find((c) => {
+              if (c.ProductId == res.productId) {
+                c.AvailablePieces = res.quantity;
+                this.product.AvailablePieces =  res.quantity;
+                this.hideAvailablePiecesModal();
+              }
+            })
+        });
+      });
   }
 
-  hideAvailablePiecesModal() {
+// hide Available Pieces Modal
+  hideAvailablePiecesModal():void {
     this.availablePiecesModal.nativeElement.style.display = 'none';
-    this.availablePieces = 0;
+    this.quantity = 0;
   }
+  addProductToOrder(product:IProduct){ }
   //#endregion
+ 
 }

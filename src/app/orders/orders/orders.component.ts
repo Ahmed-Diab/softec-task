@@ -35,7 +35,6 @@ export class OrdersComponent implements OnInit {
         return orders;
       })
     );
-
     orders.subscribe((data) => {  this.orders$ = data; });
   }
   //#endregion Methods

@@ -1,4 +1,4 @@
-@import "../../../assets/scss/colors";
+@import "../../../assets/scss/shared";
 
 .orders {
   margin: auto;
@@ -46,7 +46,7 @@
     display: flex;
 
     &:nth-of-type(odd) {
-      background: $ti;
+      background: $light;
     }
     .table-cell {
       box-sizing: border-box;

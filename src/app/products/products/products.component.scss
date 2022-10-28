@@ -58,6 +58,7 @@
       overflow: hidden; // Or flex might break
       list-style: none;
       align-self: center;
+      min-height: 50px;
       &.column-heading {
         background-color: $primary;
         color: white;

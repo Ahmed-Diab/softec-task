@@ -8,7 +8,7 @@
           <div class="table-cell date-cell column-heading">Name</div>
           <div class="table-cell payment-type-cell column-heading">Price</div>
           <div class="table-cell total-cell column-heading">Quantity</div>
-          <div class="table-cell total-cell column-heading"></div>
+          <div class="table-cell total-cell column-heading"> Action</div>
         </div>
         <div class="table-row" *ngFor="let product of products"
           [ngClass]="{'few-pieces': product.AvailablePieces <= 4}">

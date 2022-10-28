@@ -1,0 +1,16 @@
+@import './mixins';
+
+input {
+  margin: 15px 0;
+  padding: 15px 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  display: inline-block;
+  @include crossBrowser(box-sizing, border-box);
+  @include crossBrowser(transition, 2s ease all);
+  &:focus {
+    border-color:  $secondary;;
+  }
+}

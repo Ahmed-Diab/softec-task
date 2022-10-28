@@ -1,0 +1,40 @@
+@import "./mixins";
+%shared_btn {
+  outline: none;
+  height: 30px;
+  text-align: center;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+  background: $light;
+  border: 2px solid $primary;
+  color: $primary;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+
+  @include crossBrowser(transition, all 0.3s ease);
+  &:hover {
+    color: $light;
+    background: $primary;
+  }
+  &:active {
+    letter-spacing: 2px;
+  }
+}
+.btn {
+  @extend %shared_btn;
+}
+
+.btn-warn{
+  @extend %shared_btn;
+  background-color: $warn;
+  color: $light;
+  border: 2px solid  $warn;
+  &:hover {
+    color: $primary;
+    background: $light;
+  }
+}

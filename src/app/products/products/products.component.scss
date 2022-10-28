@@ -1,0 +1,141 @@
+@import "../../../assets/scss/shared";
+
+.wrapper {
+  padding: 20px;
+  margin: auto;
+  width: 100%;
+  margin: 1em auto;
+  margin: auto;
+  overflow-x: auto;
+  height: 80vh;
+  background-color: --primarycolor !important;
+}
+
+.is-striped {
+  background-color: rgba(233, 200, 147, 0.2);
+}
+
+/* Table column sizing
+================================== */
+.date-cell {
+  width: 30%;
+}
+.image-cell {
+  width: 15%;
+  img {
+    width: 100%;
+  }
+}
+.payment-type-cell {
+  width: 23%;
+}
+.total-cell {
+  width: 21%;
+}
+
+/* Apply styles
+================================== */
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+
+  .table-row {
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
+    border-radius: 10px;
+
+    &:nth-of-type(odd) {
+      background: #eee;
+    }
+    .table-cell {
+      box-sizing: border-box;
+      flex-grow: 1;
+      padding: 0.8em 1.2em;
+      overflow: hidden; // Or flex might break
+      list-style: none;
+
+      &.column-heading {
+        background-color: $primary;
+        color: white;
+        padding: 1em;
+      }
+
+      .table-cell-header {
+        display: none;
+      }
+
+      .table-cell-content {
+        p {
+          font-weight: 700;
+          margin: 5px;
+        }
+      }
+    }
+  }
+}
+
+// Mobile screen
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  .card {
+    flex: 0 0 200px;
+    margin: 10px;
+    border: 1px solid $light;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    img {
+      max-width: 100%;
+    }
+    h3,
+    h5 {
+      padding: 5px 0px 0px 0px;
+      margin: 5px 0px 0px 0px;
+    }
+  }
+}
+
+.few-pieces{
+  border: solid $warn 2px !important;
+  border-radius: 10px;
+ }
+
+//  Modal 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+
+    .modal-content {
+        border-radius: 10px;
+        background-color: $light;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid $secondary;
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .btns{
+            direction: rtl;
+        }
+      }
+  }
+  

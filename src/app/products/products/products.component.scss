@@ -26,58 +26,6 @@
     width: 100%;
   }
 }
-.payment-type-cell {
-  width: 23%;
-}
-.total-cell {
-  width: 21%;
-}
-
-/* Apply styles
-================================== */
-.table {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 3em 0;
-  padding: 0;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-
-  .table-row {
-    width: 100%;
-    display: flex;
-    margin-bottom: 5px;
-    border-radius: 10px;
-
-    &:nth-of-type(odd) {
-      background: #eee;
-    }
-    .table-cell {
-      box-sizing: border-box;
-      flex-grow: 1;
-      padding: 0.8em 1.2em;
-      overflow: hidden; // Or flex might break
-      list-style: none;
-      align-self: center;
-      min-height: 50px;
-      &.column-heading {
-        background-color: $primary;
-        color: white;
-        padding: 1em;
-      }
-
-      .table-cell-header {
-        display: none;
-      }
-
-      .table-cell-content {
-        p {
-          font-weight: 700;
-          margin: 5px;
-        }
-      }
-    }
-  }
-}
 
 // Mobile screen
 .cards-container {

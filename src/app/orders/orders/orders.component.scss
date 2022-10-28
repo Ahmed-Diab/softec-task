@@ -1,0 +1,76 @@
+@import "../../../assets/scss/colors";
+
+.orders {
+  margin: auto;
+  width: 90%;
+}
+ 
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 1em auto;
+  margin: auto;
+  overflow-x: auto;
+  height: 80vh;
+}
+
+/* Table column sizing
+================================== */
+.date-cell {
+  width: 30%;
+}
+.id-cell {
+  width: 26%;
+}
+.payment-type-cell {
+  width: 23%;
+}
+.total-cell {
+  width: 21%;
+}
+
+/* Table styles
+================================== */
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+
+  .table-row {
+    width: 100%;
+    display: flex;
+
+    &:nth-of-type(odd) {
+      background: $ti;
+    }
+    .table-cell {
+      box-sizing: border-box;
+      flex-grow: 1;
+      padding: 0.8em 1.2em;
+      overflow: hidden;
+      list-style: none;
+
+      &.column-heading {
+        background-color: $primary;
+        color: $light;
+        padding: 1em;
+      }
+
+      .table-cell-header {
+        display: none;
+      }
+
+      .table-cell-content {
+        p {
+          font-weight: 700;
+          margin: 5px;
+        }
+      }
+    }
+  }
+}

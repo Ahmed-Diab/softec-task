@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { IProduct } from 'src/app/products/iproduct';
 import { ProductService } from 'src/app/products/product.service';
@@ -23,7 +24,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(
     private responsive: BreakpointObserver,
     private orderService: OrderService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router:Router
   ) {}
 
   //#endregion Constractor
@@ -59,6 +61,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       .subscribe((products) => (this.products = products));
     this.subscriptions.push(productsSubscription);
   }
+  
   getOrders() {
     const orders = this.orderService.getOrders().pipe(
       map((orders) => {

@@ -4,19 +4,19 @@ import { IOrder } from '../iorder';
 @Component({
   selector: 'app-ordar-table',
   templateUrl: './ordar-table.component.html',
-  styleUrls: ['./ordar-table.component.scss']
-  
+  styleUrls: ['./ordar-table.component.scss'],
 })
 export class OrdarTableComponent implements OnInit {
-  @Input() orders:IOrder[];
-  @Output() OrderEvent = new EventEmitter<IOrder>();;
-  constructor() { }
+  //#region Declrations
+  @Input() orders: IOrder[];
+  @Output() OrderEvent = new EventEmitter<IOrder>();
+  //#endregion Declrations
+  
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  getOrder(order:IOrder){
+  getOrder(order: IOrder) {
     this.OrderEvent.emit(order);
   }
-
 }

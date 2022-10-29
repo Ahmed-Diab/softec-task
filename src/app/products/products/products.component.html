@@ -10,7 +10,8 @@
   <!-- Modal form to change Available Pieces -->
   <div #availablePiecesModal class="modal">
     <div class="modal-content">
-      <input min="0" type="number" name="quntity" [(ngModel)]="quantity" class="input">
+      <label for="quntity">New Quntity</label>
+      <input min="0" id="quntity" type="number" name="quntity" [(ngModel)]="quantity" class="input">
       <div class="btns">
         <button (click)="hideAvailablePiecesModal()" class="btn">Cansle</button>
         <button (click)="saveProductAvailablePieces()" class="btn">Save</button>

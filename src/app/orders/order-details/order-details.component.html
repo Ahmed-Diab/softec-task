@@ -1,4 +1,4 @@
-<section>
+<section [ngStyle]="{'width': isSmallScreen ? '95%' : '80%' }">
     <h1><span routerLink="/orders" class="router-link"> Orders</span> > Order Details #{{order?.OrderId}}</h1>
     <div class="order-header">
          <div class="order-details">

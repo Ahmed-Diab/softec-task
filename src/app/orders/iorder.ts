@@ -1,3 +1,4 @@
+import { ICustomer } from "../customers/icustomer";
 import { IProduct } from "../products/iproduct";
 
 export interface IOrder {
@@ -7,6 +8,7 @@ export interface IOrder {
     Products: IOrderProduct[];
     PaymentType: string;
     Total:number;
+    Customer?:ICustomer
   }
   export interface IOrderProduct {
     ProductId: number;

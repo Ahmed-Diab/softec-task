@@ -4,13 +4,10 @@ import { ICustomer } from '../icustomer';
 @Component({
   selector: 'app-customer-table',
   templateUrl: './customer-table.component.html',
-  styleUrls: ['./customer-table.component.scss']
+  styleUrls: ['./customer-table.component.scss'],
 })
 export class CustomerTableComponent implements OnInit {
-
-  @Input() customers:ICustomer[];
-  constructor() { }
-  ngOnInit(): void {
-  }
-
+  @Input() customers: ICustomer[];
+  constructor() {}
+  ngOnInit(): void {}
 }

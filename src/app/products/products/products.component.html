@@ -1,11 +1,10 @@
-<section class="products">
+<div class="products">
+  <h3 class="page-title">Products</h3>
   <ng-container *ngIf="products$ | async as products">
     <!-- table for large screens -->
     <app-product-card *ngIf="isSmallScreen && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-card>
     <app-product-table *ngIf="!isSmallScreen  && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-table>
- 
       <!-- *ngIf="isSmallScreen" -->
-     
   </ng-container>
 
   <!-- Modal form to change Available Pieces -->
@@ -18,4 +17,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

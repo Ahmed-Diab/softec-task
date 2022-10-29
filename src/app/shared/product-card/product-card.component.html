@@ -14,12 +14,10 @@
         <div>
             <button *ngIf="product.AvailablePieces < 4" [ngClass]="{'btn-warn':product.AvailablePieces < 4}"
                 (click)="openAvailablePiecesModal(product)" class="btn">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                Update Quantity
+                 Edit Quantity
             </button>
             <button class="btn" (click)="addProductToOrder(product)">
-                <i class="fa fa-plus-square" aria-hidden="true"></i>
-                Add To Order
+                Sell
             </button>
         </div>
     </div>

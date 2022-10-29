@@ -4,7 +4,7 @@ import { IOrder } from '../iorder';
 @Component({
   selector: 'app-ordar-table',
   templateUrl: './ordar-table.component.html',
-  styleUrls: [],
+  styleUrls: ['./ordar-table.component.scss']
   
 })
 export class OrdarTableComponent implements OnInit {

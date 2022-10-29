@@ -1,0 +1,7 @@
+@import '../../../assets/scss/shared';
+.order-table{
+    @extend %shared_table;
+    .table-cell-content {
+      padding: .8em 0px;
+   }
+  }

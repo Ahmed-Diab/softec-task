@@ -1,10 +1,10 @@
-<div class="table">
-  <div class="table-row table-row--head">
-    <div class="table-cell image-cell column-heading">Image</div>
-    <div class="table-cell date-cell column-heading">Name</div>
-    <div class="table-cell payment-type-cell column-heading">Price</div>
-    <div class="table-cell total-cell column-heading">Quantity</div>
-    <div class="table-cell total-cell column-heading"> {{!isOrder ? 'Action' : 'Total' }} </div>
+<div class="product-table">
+  <div class="table-row table-row-head">
+    <div class="table-cell column-heading image-cell-header fixed-width" >Image</div>
+    <div class="table-cell column-heading fixed-width">Name</div>
+    <div class="table-cell column-heading fixed-width">Price</div>
+    <div class="table-cell column-heading fixed-width">Quantity</div>
+    <div class="table-cell column-heading fixed-width"> {{!isOrder ? 'Action' : 'Total' }} </div>
   </div>
   <div class="table-row" *ngFor="let product of products" [ngClass]="{'few-pieces': !isOrder && product.AvailablePieces <= 4}">
     <div class="table-cell image-cell">
@@ -14,28 +14,28 @@
         </picture>
       </div>
     </div>
-    <div class="table-cell date-cell">
+    <div class="table-cell fixed-width">
       <div class="table-cell-content access-link-content">
         <p>{{product.ProductName | titlecase}}</p>
       </div>
     </div>
-    <div class="table-cell payment-type-cell">
-      <div class="table-cell-content payment-type-cell">
+    <div class="table-cell fixed-width">
+      <div class="table-cell-content">
         <p>{{product.ProductPrice | number:'.2'}}</p>
       </div>
     </div>
-    <div class="table-cell table-cell--foot total-cell">
-      <div class="table-cell-content pdf-content">
+    <div class="table-cell fixed-width">
+      <div class="table-cell-content">
         <p>{{ isOrder?  product.Quantity : product.AvailablePieces | number:'.2'}}</p>
       </div>
     </div>
-    <div class="table-cell table-cell--foot total-cell">
-      <div class="table-cell-content pdf-content">
+    <div class="table-cell fixed-width">
+      <div class="table-cell-content">
         <p *ngIf="isOrder">{{(product.Quantity * product.ProductPrice) | number:'.2'}}</p>
         <button *ngIf="product.AvailablePieces > 0" class="btn" (click)="addProductToOrder(product)"
           [hidden]="isOrder">Sell</button>
         <button *ngIf="product.AvailablePieces <= 4" [ngClass]="{'btn-warn': product.AvailablePieces <= 4}"
-          (click)="openAvailablePiecesModal(product)" class="btn" [hidden]="isOrder">Upadate Qut.</button>
+          (click)="openAvailablePiecesModal(product)" class="btn" [hidden]="isOrder">Edit Qut.</button>
       </div>
     </div>
   </div>

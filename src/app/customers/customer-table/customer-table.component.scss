@@ -1,7 +1,10 @@
-.fixed-width{
-    width: 150px !important;   
- }
-
- p{
-    margin: 0px !important;
+@import '../../../assets/scss/shared';
+.customer-table{
+    @extend %shared_table;
+    .fixed-width{
+        width: 150px !important;   
+     }
+     .table-cell-content {
+        padding: .8em 0px;
+     }
 }

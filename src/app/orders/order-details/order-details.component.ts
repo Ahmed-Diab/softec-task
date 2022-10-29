@@ -1,11 +1,12 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
-  ChangeDetectionStrategy,
   Component,
   OnDestroy,
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, take } from 'rxjs';
+import { take } from 'rxjs';
+import { Hellper } from 'src/app/shared/hellper';
 import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
@@ -14,16 +15,15 @@ import { OrderService } from '../order.service';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss'],
 })
-export class OrderDetailsComponent implements OnInit, OnDestroy {
+export class OrderDetailsComponent extends Hellper implements OnInit, OnDestroy {
   //#region Declrations
   order: IOrder | null;
-  private subscriptions: Subscription[];
-  //#endregion
+   //#endregion
 
   //#region Constractor
-  constructor(private orderService: OrderService, private router: Router) {
-    this.subscriptions = [];
-  }
+  constructor(public override responsive: BreakpointObserver, private orderService: OrderService, private router: Router) {
+    super(responsive)
+   }
   //#endregion
 
   //#region Angular life Cycle
@@ -36,6 +36,7 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
         res != null ? (this.order = res) : this.router.navigate(['orders']);
       });
     this.subscriptions.push(subOrder);
+    this.catchSmallScreen();
   }
 
   ngOnDestroy(): void {

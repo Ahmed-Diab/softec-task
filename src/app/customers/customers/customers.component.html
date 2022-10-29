@@ -1,0 +1,6 @@
+<section class="customers">
+    <ng-container *ngIf="customers$ | async as customers">
+        <app-customer-card [customers]="customers" *ngIf="isSmallScreen"></app-customer-card>
+        <app-customer-table [customers]="customers" *ngIf="!isSmallScreen"></app-customer-table>
+    </ng-container>
+</section>

@@ -1,0 +1,13 @@
+<div class="cards-container" >
+    <div class="card" *ngFor="let customer of customers">
+      <h5>
+        Name : {{customer.Name | titlecase}}
+      </h5>
+      <h5>
+       Phone : {{customer.Phone}}
+      </h5>
+      <h5>
+        Email : {{customer.Email}}
+      </h5>
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<div class="table table--collapse">
+    <div class="table-row table-row--head">
+      <div class="table-cell id-cell column-heading">#</div>
+      <div class="table-cell fixed-width date-cell column-heading">Name</div>
+      <div class="table-cell fixed-width payment-type-cell column-heading">Phone</div>
+      <div class="table-cell fixed-width total-cell column-heading">Email</div>
+    </div>
+
+    <div class="table-row" *ngFor="let customer of customers;index as i" softecHoverCell>
+      <div class="table-cell  id-cell">
+         <div class="table-cell-content date-content">
+          <p class="webinar-date"> {{i+1}} </p>
+        </div>
+      </div>
+      <div class="table-cell fixed-width date-cell">
+         <div class="table-cell-content access-link-content">
+          <p>{{customer.Name | titlecase}}</p>
+         </div>
+      </div>
+      <div class="table-cell fixed-width payment-type-cell">
+         <div class="table-cell-content payment-type-cell">
+          <p>{{customer.Phone}}</p>
+        </div>
+      </div>
+      <div class="table-cell fixed-width table-cell--foot total-cell">
+         <div class="table-cell-content pdf-content">
+          <p>{{customer.Email }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>

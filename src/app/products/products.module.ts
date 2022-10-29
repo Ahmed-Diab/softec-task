@@ -5,12 +5,11 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { ProductTableComponent } from './product-table/product-table.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductCardComponent, ProductTableComponent],
-  imports: [CommonModule, FormsModule, ProductsRoutingModule],
+  declarations: [ProductsComponent],
+  imports: [CommonModule, FormsModule, ProductsRoutingModule, SharedModule],
   providers: [ProductService],
 })
 export class ProductsModule {}

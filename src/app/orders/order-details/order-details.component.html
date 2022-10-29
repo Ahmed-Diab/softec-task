@@ -1,1 +1,26 @@
-<p>order-details works!</p>
+<section>
+    <h3>Order Details</h3>
+    <div class="order-details">
+        <div>
+            <p>Date : {{order?.OrderDate | date:'yyyy/MM/dd HH:mm:ss'}}</p>
+        </div>
+        <div>
+            <p>Order Id : {{order?.OrderId}}</p>
+        </div>
+    <!-- </div>
+    <div class="customer-details"> -->
+        <div>
+            <p> Name : {{order?.Customer?.Name | titlecase}}</p>
+        </div>
+        <div>
+            <p>Phone : {{order?.Customer?.Phone}}</p>
+        </div>
+        <div>
+            <p>Email : {{order?.Customer?.Email}}</p>
+        </div>
+        <div class="address">
+            <p>Address : {{order?.Customer?.Address}}</p>
+        </div>
+    </div>
+    <app-product-table *ngIf="order?.Products !=null" [isOrder]="true" [products]="order?.Products"></app-product-table>
+</section>

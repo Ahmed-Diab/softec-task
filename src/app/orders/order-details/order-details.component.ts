@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { delay, Subscription } from 'rxjs';
 import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
@@ -10,19 +11,19 @@ import { OrderService } from '../order.service';
 })
 export class OrderDetailsComponent implements OnInit, OnDestroy {
   //#region Declrations
-  order: IOrder | null = null;
+  order: IOrder | null;
   private subscriptions: Subscription[] = [];
   //#endregion
   //#region Constractor
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService, private router:Router) {}
   //#endregion
   
   //#region Angular life Cycle
   ngOnInit(): void {
     this.subscriptions.push(
       this.orderService.getSelecteOrder().subscribe((res) => {
-        console.log("🚀 ~ file: order-details.component.ts ~ line 24 ~ OrderDetailsComponent ~ this.orderService.getSelecteOrder ~ res", res)
-        if (res!) this.order = res;
+          console.log("🚀 ~ file: order-details.component.ts ~ line 25 ~ OrderDetailsComponent ~ this.orderService.getSelecteOrder ~ res", res)
+          res != null ? this.order = res : this.router.navigate(['orders']);
       })
     );
   }

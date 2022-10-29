@@ -1,12 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, filter, flatMap, map, mergeMap, Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/customers/customer.service';
-import { ICustomer } from 'src/app/customers/icustomer';
 import { IProduct } from 'src/app/products/iproduct';
 import { ProductService } from 'src/app/products/product.service';
-import { IOrder, IOrderProduct } from '../iorder';
+import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
 @Component({
@@ -27,7 +26,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     private responsive: BreakpointObserver,
     private orderService: OrderService,
     private productService: ProductService,
-    private router:Router,
+    private router: Router,
     private customerService: CustomerService
   ) {}
 
@@ -61,7 +60,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.subscriptions.push(productsSubscription);
   }
   // get get Order Total
-  getOrderTotal(orderProducts: IOrderProduct[]): number {
+  getOrderTotal(orderProducts: IProduct[]): number {
     let total = 0;
     orderProducts.forEach((product, ind) => {
       let price = this.products.find(
@@ -94,9 +93,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
   getOrderById(order: IOrder) {
     if (order.Products) {
       // get order products Details using for each
-      order.Products.forEach((product: IOrderProduct, index: number) => {
+      order.Products.forEach((product: IProduct, index: number) => {
         this.productService.getProductBy(product.ProductId).subscribe((pro) => {
-          order.Products[index].Product = pro;
+          order.Products[index] = pro;
+          order.Products[index].Quantity = product.Quantity;
         });
       });
     }
@@ -104,6 +104,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.customerService.getCustomerBy(order.UserId).subscribe((res) => {
       order.Customer = res;
       this.orderService.setSelecteOrder(order);
+      this.router.navigate(['orders/order-details']);
     });
   }
 

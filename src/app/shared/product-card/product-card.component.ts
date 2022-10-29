@@ -1,14 +1,15 @@
+import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProduct } from '../iproduct';
- import { ProductCardComponent } from '../product-card/product-card.component';
+import { IProduct } from '../../products/iproduct';
 
 @Component({
-  selector: 'app-product-table',
-  templateUrl: './product-table.component.html',
-  styleUrls: ['./product-table.component.scss']
+  selector: 'app-product-card',
+  templateUrl: './product-card.component.html',
+  styleUrls: ['./product-card.component.scss'],
 })
-export class ProductTableComponent  implements OnInit {
+export class ProductCardComponent implements OnInit {
   @Input() products: IProduct[];
+  @Input() isOrder:boolean = false;
   @Output() UpdateQuntityEvent = new EventEmitter<IProduct>();
   @Output() AddToOrderEvent = new EventEmitter<IProduct>();
 
@@ -18,8 +19,8 @@ export class ProductTableComponent  implements OnInit {
   openAvailablePiecesModal(product: IProduct) {
     this.UpdateQuntityEvent.emit(product);
   }
+  
   addProductToOrder(product: IProduct) {
     this.AddToOrderEvent.emit(product);
   }
-
 }

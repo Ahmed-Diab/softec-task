@@ -5,13 +5,8 @@ export interface IOrder {
     OrderId: number;
     OrderDate: string;
     UserId: string;
-    Products: IOrderProduct[];
+    Products: IProduct[];
     PaymentType: string;
     Total:number;
     Customer?:ICustomer
-  }
-  export interface IOrderProduct {
-    ProductId: number;
-    Quantity: number;
-    Product?:IProduct;
   }

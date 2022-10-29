@@ -26,7 +26,7 @@
         &.column-heading {
           background-color: $primary;
           color: $light;
-          padding: 1em;
+          padding: 0.8em 1.2em;
         }
   
         .table-cell-header {
@@ -37,6 +37,7 @@
           p {
             font-weight: 700;
             margin: 5px;
+            word-wrap:break-word;
           }
         }
       }

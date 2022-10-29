@@ -1,6 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
@@ -12,24 +17,30 @@ import { OrderService } from '../order.service';
 export class OrderDetailsComponent implements OnInit, OnDestroy {
   //#region Declrations
   order: IOrder | null;
-  private subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[];
   //#endregion
+
   //#region Constractor
-  constructor(private orderService: OrderService, private router:Router) {}
+  constructor(private orderService: OrderService, private router: Router) {
+    this.subscriptions = [];
+  }
   //#endregion
-  
+
   //#region Angular life Cycle
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.orderService.getSelecteOrder().subscribe((res) => {
-          console.log("🚀 ~ file: order-details.component.ts ~ line 25 ~ OrderDetailsComponent ~ this.orderService.getSelecteOrder ~ res", res)
-          res != null ? this.order = res : this.router.navigate(['orders']);
-      })
-    );
+    let subOrder = this.orderService
+      .getSelecteOrder()
+      .pipe(take(1))
+      .subscribe((res) => {
+        // check if res is not null to navegate to orders page if null
+        res != null ? (this.order = res) : this.router.navigate(['orders']);
+      });
+    this.subscriptions.push(subOrder);
   }
 
   ngOnDestroy(): void {
-    this;
+    // unsubscribe selected order
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   //#endregion

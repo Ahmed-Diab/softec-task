@@ -1,26 +1,47 @@
 <section>
-    <h3>Order Details</h3>
-    <div class="order-details">
-        <div>
-            <p>Date : {{order?.OrderDate | date:'yyyy/MM/dd HH:mm:ss'}}</p>
+    <h1><span routerLink="/orders" class="router-link"> Orders</span> > Order Details #{{order?.OrderId}}</h1>
+    <div class="order-header">
+         <div class="order-details">
+            <div>
+                <h3>Date</h3>
+                <p>{{order?.OrderDate | date:'yyyy/MM/dd'}}</p>
+            </div>
+            <div>
+                <h3>Order Id</h3>
+                <p>#{{order?.OrderId}}</p>
+            </div>
+            <div>
+                <h3>Payment Type </h3>
+                <p>{{order?.PaymentType | titlecase}}</p>
+            </div>
+            <div>
+                <h3>Total Price </h3>
+                <p>{{order?.Total | number:'.2'}}</p>
+            </div>
         </div>
-        <div>
-            <p>Order Id : {{order?.OrderId}}</p>
-        </div>
-    <!-- </div>
-    <div class="customer-details"> -->
-        <div>
-            <p> Name : {{order?.Customer?.Name | titlecase}}</p>
-        </div>
-        <div>
-            <p>Phone : {{order?.Customer?.Phone}}</p>
-        </div>
-        <div>
-            <p>Email : {{order?.Customer?.Email}}</p>
-        </div>
-        <div class="address">
-            <p>Address : {{order?.Customer?.Address}}</p>
+        <h3 class="title">Customer Details</h3>
+
+        <div class="customer-details">
+            <div>
+                <h3> Name </h3>
+                <p>{{order?.Customer?.Name | titlecase}}</p>
+            </div>
+            <div>
+                <h3>Phone</h3>
+                <p>{{order?.Customer?.Phone}}</p>
+            </div>
+            <div>
+                <h3>Email </h3>
+                <p>{{order?.Customer?.Email}}</p>
+            </div>
+            <div class="address">
+                <h3>Address :</h3>
+                <p> {{order?.Customer?.Address}}</p>
+            </div>
+            
         </div>
     </div>
+
+    <h3 class="title">Products Details</h3>
     <app-product-table *ngIf="order?.Products !=null" [isOrder]="true" [products]="order?.Products"></app-product-table>
 </section>

@@ -1,8 +1,38 @@
-// .order-details, .customer-details{
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 2fr;
-//     .address{
-//         grid-row: 10;
-//         grid-column: 1 6;
-//     }
-// }
+@import '../../../assets/scss/shared';
+section{
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    h1{
+        padding: 10px 0px;
+    }
+    .title{
+        padding: 5px 0px;
+     }
+    .order-header{
+         box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+         margin: 0 0 .5em 0;
+         padding: 20px;
+        
+        .order-details, .customer-details{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 0 .5em 0;
+            padding: 0;
+            gap: 20px;
+            justify-content: space-between;
+            p {
+                font-weight: bold;
+                padding: 2px;
+            }
+            border-bottom: 2px solid $primary;
+
+        }
+        .order-details{
+            border-bottom: 2px solid $primary;
+        }
+         
+    }
+    
+    
+}

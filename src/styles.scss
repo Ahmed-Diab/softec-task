@@ -7,7 +7,18 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 body {
   font-family: "Courier New", Courier, monospace;
+}
+
+.router-link{
+  opacity: .3;
+  color: $primary;
+  transition: all ease-in-out .3s;
+  &:hover{
+    cursor: pointer;
+    opacity: 1;
+  }
 }

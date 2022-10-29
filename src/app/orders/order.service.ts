@@ -12,7 +12,7 @@ export class OrderService {
   //#endregion
 
   //#region Methods
-  setSelecteOrder(order: IOrder) {
+  setSelecteOrder(order: IOrder):void {
     this.selectedOrder$.next(order);
   }
   getSelecteOrder():Observable<IOrder | null> {
@@ -27,6 +27,6 @@ export class OrderService {
     return this.httpClient.get<IOrder>('getOrder', { params: { orderId } });
   }
   // create new order
-  addOrder(order: IOrder) {}
+  addOrder(order: IOrder):void {}
   //#endregion
 }

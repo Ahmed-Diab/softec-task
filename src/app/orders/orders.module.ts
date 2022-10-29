@@ -6,12 +6,14 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrdarTableComponent } from './orders/ordar-table/ordar-table.component';
 import { SharedModule } from '../shared/shared.module';
 import { OrdarCardComponent } from './orders/ordar-card/ordar-card.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
     OrdersComponent,
      OrdarTableComponent,
-     OrdarCardComponent
+     OrdarCardComponent,
+     OrderDetailsComponent
    ],
   imports: [
     CommonModule,

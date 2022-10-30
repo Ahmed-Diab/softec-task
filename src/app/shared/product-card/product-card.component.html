@@ -11,7 +11,7 @@
         <h5>
             Available Pieces : {{product.AvailablePieces}}
         </h5>
-        <div>
+        <div dir="rtl">
             <button *ngIf="product.AvailablePieces < 4" [ngClass]="{'btn-warn':product.AvailablePieces < 4}"
                 (click)="openAvailablePiecesModal(product)" class="btn">
                  Edit Quantity

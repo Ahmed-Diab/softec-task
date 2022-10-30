@@ -57,7 +57,10 @@ export class OrdersComponent extends Hellper implements OnInit, OnDestroy {
         orders.forEach((order) => {
           // I do this because not all OrderDate at json file in same length and i am lazy to update order date one by one
           order.OrderDate = order.OrderDate.slice(0, 15);
-          order.Total = this.orderService.getOrderTotal(order.Products, this.products);
+          order.Total = this.orderService.getOrderTotal(
+            order.Products,
+            this.products
+          );
         });
         return orders;
       })
@@ -67,23 +70,9 @@ export class OrdersComponent extends Hellper implements OnInit, OnDestroy {
     });
     this.subscriptions.push(subOrders);
   }
-
   // get order Details and navigate to order-details component
-  getOrderById(order: IOrder) :void{
-    // get order products Details using for each
-    order?.Products?.forEach((product: IProduct, index: number) => {
-      order.Products[index] = this.products?.find( (o) => o.ProductId == product.ProductId)!;
-      order.Products[index].Quantity =  product?.Quantity!;
-    });
-    // get order customer Details and change SelecteOrder value
-    let subCustomer = this.customerService
-      .getCustomerBy(order.UserId)
-      .subscribe((res) => {
-        order.Customer = res;
-        this.orderService.setSelecteOrder(order);
-        this.router.navigate(['orders/order-details']);
-      });
-    this.subscriptions.push(subCustomer);
+  navigateToOrderDetails(order: IOrder): void {
+    this.router.navigate(['orders/order-details', { orderId: order.OrderId }]);
   }
   //#endregion Methods
 }

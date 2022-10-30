@@ -1,47 +1,73 @@
-<section [ngStyle]="{'width': isSmallScreen ? '95%' : '80%' }">
-    <h1><span routerLink="/orders" class="router-link"> Orders</span> > Order Details #{{order?.OrderId}}</h1>
+<div class="container">
+    <h1>
+        <span routerLink="/orders" class="router-link" *ngIf="orderId">Orders </span>
+        {{!orderId ? 'New Order': ' > Order Details # ' }} 
+         {{orderId ? order.OrderId:''}}
+    </h1>
+    <!-- oreder  header  -->
     <div class="order-header">
-         <div class="order-details">
+        <!-- order information contant order details -->
+        <div class="order-details">
             <div>
                 <h3>Date</h3>
-                <p>{{order?.OrderDate | date:'yyyy/MM/dd'}}</p>
+                <p>{{order.OrderDate | date:'yyyy/MM/dd'}}</p>
             </div>
             <div>
                 <h3>Order Id</h3>
-                <p>#{{order?.OrderId}}</p>
+                <p>#{{order.OrderId}}</p>
             </div>
             <div>
                 <h3>Payment Type </h3>
-                <p>{{order?.PaymentType | titlecase}}</p>
+                <select *ngIf="!orderId" class="select" [(ngModel)]="order.PaymentType"
+                    (ngModelChange)="order.PaymentType = $event">
+                    <option [ngValue]="'cash'">Cash</option>
+                    <option [ngValue]="'online'">Online</option>
+                </select>
+                <p *ngIf="orderId">{{order.PaymentType}}</p>
             </div>
             <div>
                 <h3>Total Price </h3>
-                <p>{{order?.Total | number:'.2'}}</p>
+                <p>{{order.Total | number:'.2'}}</p>
             </div>
         </div>
+        <!-- Customer Details  -->
         <h3 class="title">Customer Details</h3>
-
+        <!-- Customer Details contant  -->
         <div class="customer-details">
             <div>
                 <h3> Name </h3>
-                <p>{{order?.Customer?.Name | titlecase}}</p>
+                <ng-container *ngIf="customers$  | async as customers">
+                    <select *ngIf="!orderId" class="select" [(ngModel)]="order.Customer"
+                        (ngModelChange)="order.Customer = $event" #cust>
+                        <option [value]="order.Customer" disabled selected hidden>Select Customer</option>
+                        <option *ngFor="let cust of customers" [ngValue]="cust">{{cust.Name}}</option>
+                    </select>
+                </ng-container>
+                <p *ngIf="orderId">{{order.Customer?.Name}}</p>
             </div>
-            <div>
+            <div class="fixed-width150">
                 <h3>Phone</h3>
-                <p>{{order?.Customer?.Phone}}</p>
+                <p>{{order.Customer?.Phone}}</p>
             </div>
-            <div>
+            <div class="fixed-width150">
                 <h3>Email </h3>
-                <p>{{order?.Customer?.Email}}</p>
+                <p>{{order.Customer?.Email}}</p>
             </div>
             <div class="address">
                 <h3>Address :</h3>
-                <p> {{order?.Customer?.Address}}</p>
+                <p> {{order.Customer?.Address}}</p>
             </div>
-            
+
         </div>
     </div>
-
-    <h3 class="title">Products Details</h3>
-    <softec-product-table *ngIf="order?.Products !=null" [isOrder]="true" [isSmallScreen]="isSmallScreen" [products]="order?.Products"></softec-product-table>
-</section>
+    <!-- Products Details -->
+    <h3 class="title">Products Details {{isSmallScreen?1:2}}</h3>
+    <softec-product-table *ngIf="order?.Products != null" [isOrder]="true" [isSmallScreen]="isSmallScreen"
+        [products]="order.Products">
+    </softec-product-table>
+    <!-- Order footer contant save and cansle buttons-->
+    <div dir="rtl" *ngIf="!orderId">
+        <button class="btn" (click)="saveOrder()">Save</button>
+        <button class="btn" (click)="cancelOrder()">Cancel</button>
+    </div>
+</div>

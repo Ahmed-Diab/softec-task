@@ -10,6 +10,7 @@ import { IProduct } from 'src/app/products/iproduct';
 export class ProductTableComponent  implements OnInit {
   @Input() products: IProduct[] | undefined;
   @Input() isOrder:boolean = false;
+  @Input() isSmallScreen:boolean;
   @Output() UpdateQuntityEvent = new EventEmitter<IProduct>();
   @Output() AddToOrderEvent = new EventEmitter<IProduct>();
 

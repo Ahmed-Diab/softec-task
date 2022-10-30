@@ -1,13 +1,13 @@
 <div class="product-table">
   <div class="table-row table-row-head">
-    <div class="table-cell column-heading image-cell-header fixed-width" >Image</div>
+    <div class="table-cell column-heading image-cell-header fixed-width" *ngIf="!isSmallScreen">Image</div>
      <div class="table-cell column-heading fixed-width">Name</div>
     <div class="table-cell column-heading fixed-width">Price</div>
-    <div class="table-cell column-heading fixed-width">Quantity</div>
+    <div class="table-cell column-heading fixed-width">{{!isSmallScreen?'Quantity':'Qut'}}</div>
     <div class="table-cell column-heading fixed-width"> {{!isOrder ? 'Action' : 'Total' }} </div>
   </div>
   <div class="table-row" *ngFor="let product of products" [ngClass]="{'few-pieces': !isOrder && product.AvailablePieces <= 4}">
-    <div class="table-cell image-cell">
+    <div class="table-cell image-cell" *ngIf="!isSmallScreen">
       <div class="table-cell-content date-content">
         <picture>
           <img class="image" [src]="product.ProductImg" [alt]="product.ProductName">

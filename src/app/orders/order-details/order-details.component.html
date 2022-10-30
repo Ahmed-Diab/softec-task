@@ -43,5 +43,5 @@
     </div>
 
     <h3 class="title">Products Details</h3>
-    <app-product-table *ngIf="order?.Products !=null" [isOrder]="true" [products]="order?.Products"></app-product-table>
+    <app-product-table *ngIf="order?.Products !=null" [isOrder]="true" [isSmallScreen]="isSmallScreen" [products]="order?.Products"></app-product-table>
 </section>

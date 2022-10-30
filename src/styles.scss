@@ -10,7 +10,11 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 
-// globale classes
+// globale Style
+p {
+  word-break: break-all;
+}
+
 .router-link {
   opacity: 0.3;
   color: $primary;
@@ -33,6 +37,6 @@ body {
   }
 }
 
-.fixed-width{
-  width: 150px !important;   
+.fixed-width {
+  width: 150px !important;
 }

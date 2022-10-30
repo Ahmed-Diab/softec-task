@@ -3,7 +3,7 @@ import { IProduct } from 'src/app/products/iproduct';
   import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
-  selector: 'app-product-table',
+  selector: 'softec-product-table',
   templateUrl: './product-table.component.html',
   styleUrls: ['./product-table.component.scss']
 })

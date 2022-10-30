@@ -10,7 +10,7 @@ import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'softec-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })

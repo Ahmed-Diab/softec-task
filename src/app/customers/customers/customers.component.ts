@@ -6,7 +6,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Hellper } from 'src/app/shared/hellper';
 
 @Component({
-  selector: 'app-customers',
+  selector: 'softec-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
 })

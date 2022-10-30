@@ -11,7 +11,7 @@ import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
 
 @Component({
-  selector: 'app-order-details',
+  selector: 'softec-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss'],
 })

@@ -2,8 +2,8 @@
   <h3 class="page-title">Products</h3>
   <ng-container *ngIf="products$ | async as products">
     <!-- table for large screens -->
-    <app-product-card *ngIf="isSmallScreen && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-card>
-    <app-product-table *ngIf="!isSmallScreen  && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></app-product-table>
+    <softec-product-card *ngIf="isSmallScreen && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></softec-product-card>
+    <softec-product-table *ngIf="!isSmallScreen  && products" [products]="products" (AddToOrderEvent)="addProductToOrder($event)" (UpdateQuntityEvent)="openAvailablePiecesModal($event)"></softec-product-table>
       <!-- *ngIf="isSmallScreen" -->
   </ng-container>
 

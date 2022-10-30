@@ -50,24 +50,14 @@ export class OrdersComponent extends Hellper implements OnInit, OnDestroy {
       .subscribe((products) => (this.products = products));
     this.subscriptions.push(productsSub);
   }
-  // get get Order Total
-  getOrderTotal(orderProducts: IProduct[]): number {
-    let total = 0;
-    orderProducts.forEach((product, ind) => {
-      let price = this.products.find(
-        (x) => x.ProductId == product.ProductId
-      )?.ProductPrice;
-      total += price != null ? price * orderProducts[ind].Quantity : 0;
-    });
-    return total;
-  }
+
   getOrders() {
     const orders = this.orderService.getOrders().pipe(
       map((orders) => {
         orders.forEach((order) => {
           // I do this because not all OrderDate at json file in same length and i am lazy to update order date one by one
           order.OrderDate = order.OrderDate.slice(0, 15);
-          order.Total = this.getOrderTotal(order.Products);
+          order.Total = this.orderService.getOrderTotal(order.Products, this.products);
         });
         return orders;
       })

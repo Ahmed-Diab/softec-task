@@ -1,9 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Hellper } from 'src/app/shared/hellper';
@@ -15,15 +11,23 @@ import { OrderService } from '../order.service';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss'],
 })
-export class OrderDetailsComponent extends Hellper implements OnInit, OnDestroy {
+export class OrderDetailsComponent
+  extends Hellper
+  implements OnInit, OnDestroy
+{
   //#region Declrations
   order: IOrder | null;
-   //#endregion
+  @Input() isNewOrder: boolean = false;
+  //#endregion
 
   //#region Constractor
-  constructor(public override responsive: BreakpointObserver, private orderService: OrderService, private router: Router) {
-    super(responsive)
-   }
+  constructor(
+    public override responsive: BreakpointObserver,
+    private orderService: OrderService,
+    private router: Router
+  ) {
+    super(responsive);
+  }
   //#endregion
 
   //#region Angular life Cycle

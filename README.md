@@ -1,27 +1,26 @@
-# SoftecTask
+# Softec Task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+This project is built using [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+Considering mobile first principle.
 
-## Development server
+## Description
+Application consists of three main pages, a page for displaying products,  customers  page and also a page for displaying orders . 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+There is also an additional screen through which you can review the details of Order And here is a simple descriptions of the application pages to  learn more about it.
 
-## Code scaffolding
+## Customers page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+All existing Customers will be displayed her and some  data , such as the customer's name, phone number, e-mail, and address.
 
-## Build
+## Products Page
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+It is a page to display all the existing products and show their data, such as the product image, name price  and available quantity.
+And through this page, you can make an order by clicking on the Sell button.
+Also, can modifying the available quantity of the product, in case the quantity of the product is less than 5, the item will be highlighted with display a button for you to modify.
+Also If the product available quantity is zero, it cannot be sold, and the sell button will be hidden.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Orders Page
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+View some details about the orders, such as the number, date, method of payment, and also the total.
+To know more details about the order, you can click on the indicator or through a button, and the application will go to a new window through which you can see the details of the order such as the data I mentioned earlier, as well as the customer data and all the products in it

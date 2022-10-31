@@ -37,10 +37,5 @@ describe('OrderService', () => {
     });
   });
 
-  it('should update SelecteOrder', () => {
-    service.setSelecteOrder(order);
-    service.getSelecteOrder().subscribe((res) => {
-      expect(res).toEqual(order);
-    });
-  });
+   
 });

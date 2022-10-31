@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-import { OrdersRoutingModule } from './orders-routing.module';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdarTableComponent } from './ordar-table/ordar-table.component';
 import { SharedModule } from '../shared/shared.module';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdarCardComponent } from './ordar-card/ordar-card.component';
+import { OrdarTableComponent } from './ordar-table/ordar-table.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class OrdersModule { }

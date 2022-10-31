@@ -19,5 +19,15 @@ export class CustomerService {
       filter((res: ICustomer) => res.Id === id)
     );
   }
-  
+
+  public initCustomerObject(): ICustomer {
+    return {
+      Address: '',
+      Email: '',
+      Id: '',
+      Name: '',
+      Phone: '',
+      RegisterDate: '',
+    };
+  }
 }

@@ -1,6 +1,5 @@
-import { ICustomer } from "../customers/icustomer";
 import { IProduct } from "../products/iproduct";
-
+import { ICustomer } from "../customers/icustomer";
 export interface IOrder {
     OrderId: number;
     OrderDate: string;

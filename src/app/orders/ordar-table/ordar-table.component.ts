@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IOrder } from '../iorder';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'softec-ordar-table',
   templateUrl: './ordar-table.component.html',
@@ -11,12 +10,14 @@ export class OrdarTableComponent implements OnInit {
   @Input() orders: IOrder[];
   @Output() OrderEvent = new EventEmitter<IOrder>();
   //#endregion Declrations
-  
+
   constructor() {}
 
   ngOnInit(): void {}
-
+  
+  //#region Methods
   getOrder(order: IOrder) {
     this.OrderEvent.emit(order);
   }
+  //#endregion
 }

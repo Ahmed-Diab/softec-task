@@ -1,5 +1,9 @@
 <section class="orders">
     <h3 class="page-title">Orders</h3>
-    <softec-ordar-table *ngIf="!isSmallScreen" [orders]="orders$" (OrderEvent)="navigateToOrderDetails($event)"></softec-ordar-table>
-    <softec-ordar-card *ngIf="isSmallScreen" [orders]="orders$" (OrderEvent)="navigateToOrderDetails($event)"></softec-ordar-card>
+    <!-- ordar-table for large screens -->
+    <softec-ordar-table *ngIf="!isSmallScreen" [orders]="orders$" (OrderEvent)="navigateToOrderDetails($event)">
+    </softec-ordar-table>
+    <!-- ordar-card for small screens -->
+    <softec-ordar-card *ngIf="isSmallScreen" [orders]="orders$" (OrderEvent)="navigateToOrderDetails($event)">
+    </softec-ordar-card>
 </section>

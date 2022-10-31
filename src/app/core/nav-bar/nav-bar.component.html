@@ -9,6 +9,10 @@
         <!-- menu router links -->
         <div class="menu">
             <li>
+                <a [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/orders/order-details']" routerLinkActive="active" (click)="xxx.click()"
+                    *ngIf="orderProductsLength>0">New Order</a>
+            </li>
+            <li>
                 <a [routerLink]="['/products']" routerLinkActive="active" (click)="xxx.click()">Products</a>
             </li>
             <li>
@@ -17,10 +21,6 @@
             <li>
                 <a [routerLink]="['/customers']" routerLinkActive="active"
                     (click)="xxx.click()">Customers</a>
-            </li>
-            <li>
-                <a [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/orders/order-details']" routerLinkActive="active" (click)="xxx.click()"
-                    *ngIf="orderProductsLength>0">New Order</a>
             </li>
         </div>
     </ul>

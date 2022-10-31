@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CustomerService } from '../customer.service';
+import { Observable } from 'rxjs';
 import { ICustomer } from '../icustomer';
-import { Observable, Subscription } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Hellper } from 'src/app/shared/hellper';
+import { CustomerService } from '../customer.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'softec-customers',
@@ -14,6 +14,7 @@ export class CustomersComponent extends Hellper implements OnInit, OnDestroy {
   //#region Declrations
   customers$: Observable<ICustomer[]>;
   //#endregion
+  
   //#region Constractor
   constructor(
     private customerService: CustomerService,
@@ -32,11 +33,11 @@ export class CustomersComponent extends Hellper implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
-  //#region
+  //#endregion
 
   //#region Methods
   getCustomers() {
     this.customers$ = this.customerService.getCustomers();
   }
-  //#region
+  //#endregion
 }

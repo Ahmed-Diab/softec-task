@@ -1,8 +1,9 @@
 <div class="container">
+    <!-- page title -->
     <h1>
         <span routerLink="/orders" class="router-link" *ngIf="orderId">Orders </span>
-        {{!orderId ? 'New Order': ' > Order Details # ' }} 
-         {{orderId ? order.OrderId:''}}
+        {{!orderId ? 'New Order': ' > Order Details # ' }}
+        {{orderId ? order.OrderId:''}}
     </h1>
     <!-- oreder  header  -->
     <div class="order-header">

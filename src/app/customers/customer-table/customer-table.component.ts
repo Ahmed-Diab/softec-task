@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { ICustomer } from '../icustomer';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'softec-customer-table',

@@ -1,38 +1,44 @@
 <div class="customer-table">
-    <div class="table-row table-row-head">
-      <div class="table-cell id-cell column-heading">#</div>
-      <div class="table-cell fixed-width  column-heading">Name</div>
-      <div class="table-cell fixed-width column-heading">Phone</div>
-      <div class="table-cell fixed-width column-heading">Email</div>
-      <div class="table-cell fixed-width column-heading">Address</div>
-    </div>
-
-    <div class="table-row" *ngFor="let customer of customers;index as i" softecHoverCell>
-      <div class="table-cell  id-cell">
-         <div class="table-cell-content date-content">
-          <p class="webinar-date"> {{i+1}} </p>
-        </div>
-      </div>
-      <div class="table-cell fixed-width">
-         <div class="table-cell-content">
-          <p>{{customer.Name | titlecase}}</p>
-         </div>
-      </div>
-      <div class="table-cell fixed-width ">
-         <div class="table-cell-content">
-          <p>{{customer.Phone}}</p>
-        </div>
-      </div>
-      <div class="table-cell fixed-width ">
-         <div class="table-cell-content">
-          <p>{{customer.Email }}</p>
-        </div>
-      </div>
-      <div class="table-cell fixed-width ">
-        <div class="table-cell-content">
-         <p>{{customer.Address }}</p>
-       </div>
-     </div>
-    </div>
-
+  <!-- customer table headr -->
+  <div class="table-row table-row-head">
+    <div class="table-cell id-cell column-heading">#</div>
+    <div class="table-cell fixed-width  column-heading">Name</div>
+    <div class="table-cell fixed-width column-heading">Phone</div>
+    <div class="table-cell fixed-width column-heading">Email</div>
+    <div class="table-cell fixed-width column-heading">Address</div>
   </div>
+ <!-- customer table rows -->
+  <div class="table-row" *ngFor="let customer of customers;index as i" softecHoverCell>
+    <!-- customer index -->
+    <div class="table-cell">
+      <div class="table-cell-content">
+        <p class="webinar-date"> {{i+1}} </p>
+      </div>
+    </div>
+        <!-- customer Name -->
+    <div class="table-cell fixed-width">
+      <div class="table-cell-content">
+        <p>{{customer.Name | titlecase}}</p>
+      </div>
+    </div>
+    <!-- customer Phone -->
+    <div class="table-cell fixed-width ">
+      <div class="table-cell-content">
+        <p>{{customer.Phone}}</p>
+      </div>
+    </div>
+    <!-- customer Email -->
+    <div class="table-cell fixed-width ">
+      <div class="table-cell-content">
+        <p>{{customer.Email }}</p>
+      </div>
+    </div>
+    <!-- customer Address -->
+    <div class="table-cell fixed-width ">
+      <div class="table-cell-content">
+        <p>{{customer.Address }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

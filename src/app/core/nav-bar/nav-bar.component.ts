@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OrderService } from 'src/app/orders/order.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'softec-nav-bar',

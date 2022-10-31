@@ -1,38 +1,36 @@
 <div class="order-table">
+  <!-- order table header -->
     <div class="table-row table-row-head">
       <div class="table-cell column-heading fixed-width">Order Id</div>
       <div class="table-cell column-heading fixed-width">Date</div>
       <div class="table-cell column-heading fixed-width">Payment Type</div>
       <div class="table-cell column-heading fixed-width">Total</div>
     </div>
-
+  <!-- order table rows -->
     <div (click)="getOrder(order)" class="table-row" *ngFor="let order of orders" softecHoverCell>
+      <!-- Order Id -->
       <div class="table-cell fixed-width">
          <div class="table-cell-content date-content">
           <p class="webinar-date"> {{order.OrderId}} </p>
         </div>
       </div>
+      <!-- Order Date -->
       <div class="table-cell fixed-width">
          <div class="table-cell-content">
           <p>{{order.OrderDate | date: 'yyyy-MM-dd'}}</p>
          </div>
       </div>
+      <!-- Order Payment type -->
       <div class="table-cell fixed-width">
          <div class="table-cell-content">
           <p>{{order.PaymentType | titlecase}}</p>
         </div>
       </div>
+      <!-- Order Total -->
       <div class="table-cell fixed-width">
          <div class="table-cell-content">
           <p>{{order.Total | number:'.2'}}</p>
         </div>
       </div>
-    </div>
-
-    <div class="table-row table-row--head">
-      <div class="table-cell column-heading"> </div>
-      <div class="table-cell column-heading"> </div>
-      <div class="table-cell column-heading"> </div>
-      <div class="table-cell column-heading"> </div>
     </div>
   </div>

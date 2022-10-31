@@ -1,14 +1,15 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, take } from 'rxjs';
-import { CustomerService } from 'src/app/customers/customer.service';
-import { ICustomer } from 'src/app/customers/icustomer';
-import { IProduct } from 'src/app/products/iproduct';
-import { ProductService } from 'src/app/products/product.service';
-import { Hellper } from 'src/app/shared/hellper';
+
+import { Observable } from 'rxjs';
 import { IOrder } from '../iorder';
 import { OrderService } from '../order.service';
+import { Hellper } from 'src/app/shared/hellper';
+import { IProduct } from 'src/app/products/iproduct';
+import { ICustomer } from 'src/app/customers/icustomer';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/products/product.service';
+import { CustomerService } from 'src/app/customers/customer.service';
 
 @Component({
   selector: 'softec-order-details',
@@ -110,16 +111,9 @@ export class OrderDetailsComponent
     this.orderService.setOrderProducts([]);
     this.router.navigate(['/products']);
   }
+
   saveOrder() :void{
       window.alert('This feature will be added soon')
-  }
-
-  getProducts():void {
-    let subProducts = this.productService.getProducts().subscribe((res) => {
-      this.products = res;
-      this.products.forEach((x) => (x.Quantity = 1));
-    });
-    this.subscriptions.push(subProducts);
   }
   //#endregion
 }

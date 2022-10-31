@@ -1,11 +1,12 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+// this class help me to contant must commen declrations and Methods 
 export class Hellper {
   //#region Declration
   isSmallScreen: boolean;
   subscriptions: Subscription[] = [];
   //#endregion
+  
   constructor(public responsive: BreakpointObserver) {}
 
   //#region Methods

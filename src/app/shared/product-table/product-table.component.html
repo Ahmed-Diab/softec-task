@@ -1,12 +1,17 @@
+<!-- product table -->
 <div class="product-table">
+  <!-- product table header -->
   <div class="table-row table-row-head">
     <div class="table-cell column-heading image-cell-header fixed-width" *ngIf="!isSmallScreen">Image</div>
-     <div class="table-cell column-heading fixed-width">Name</div>
+    <div class="table-cell column-heading fixed-width">Name</div>
     <div class="table-cell column-heading fixed-width">Price</div>
     <div class="table-cell column-heading fixed-width">{{!isSmallScreen?'Quantity':'Qut'}}</div>
     <div class="table-cell column-heading fixed-width"> {{!isOrder ? 'Action' : 'Total' }} </div>
   </div>
-  <div class="table-row" *ngFor="let product of products" [ngClass]="{'few-pieces': !isOrder && product.AvailablePieces <= 4}">
+  <!-- product table rows -->
+  <div class="table-row" *ngFor="let product of products"
+    [ngClass]="{'few-pieces': !isOrder && product.AvailablePieces <= 4}">
+    <!-- product image -->
     <div class="table-cell image-cell" *ngIf="!isSmallScreen">
       <div class="table-cell-content date-content">
         <picture>
@@ -14,21 +19,25 @@
         </picture>
       </div>
     </div>
+    <!-- product name -->
     <div class="table-cell fixed-width">
       <div class="table-cell-content">
         <p>{{product.ProductName | titlecase}}</p>
       </div>
     </div>
+    <!-- product price -->
     <div class="table-cell fixed-width">
       <div class="table-cell-content">
         <p>{{product.ProductPrice | number:'.2'}}</p>
       </div>
     </div>
+    <!-- product AvailablePieces -->
     <div class="table-cell fixed-width">
       <div class="table-cell-content">
-        <p>{{ isOrder?  product.Quantity : product.AvailablePieces | number:'.2'}}</p>
+        <p>{{ isOrder? product.Quantity : product.AvailablePieces | number:'.2'}}</p>
       </div>
     </div>
+    <!-- product Action -->
     <div class="table-cell fixed-width">
       <div class="table-cell-content">
         <p *ngIf="isOrder">{{(product.Quantity * product.ProductPrice) | number:'.2'}}</p>
